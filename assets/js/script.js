@@ -31,6 +31,8 @@ function updateTimeBlock() {
 }
 // updatePlanner used to save to local storage
 function updatePlanner(e) {
+    debugger;
+    console.time("start");
     // get the value of the class .description
     var description = $(e.target).siblings('.description').val();
     // get the div time-block id
@@ -41,12 +43,12 @@ function updatePlanner(e) {
 }
 
 function main() {
+    // Listen for save click button and call on updatePlanner
+    $('.saveBtn').on('click', updatePlanner);
     // update current date at the top
     $("#currentDay").text(moment().format('dddd, LL'));
     // call the updateTimeBlock function
     updateTimeBlock();
-    // Listen for save click button and call on updatePlanner
-    $('.saveBtn').on('click', updatePlanner);
 };
 
-main();
+$(document).ready(main);
